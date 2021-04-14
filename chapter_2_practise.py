@@ -31,9 +31,37 @@ npx.set_np()
 
 # Concatenating of tensors
 
-X = np.arange(12).reshape(3,4)
-Y = np.random.normal(0,1,(3,4))
-print("X",X)
-print("Y",Y)
-print("np.concatenate([X,Y], axis=0)", np.concatenate([X,Y], axis=0), np.concatenate([X,Y], axis=0).shape)
-print("np.concatenate([X,Y], axis=1)", np.concatenate([X,Y], axis=1), np.concatenate([X,Y], axis=1).shape)
+# X = np.arange(12).reshape(3,4)
+# Y = np.random.normal(0,1,(3,4))
+# print("X",X)
+# print("Y",Y)
+# print("np.concatenate([X,Y], axis=0)", np.concatenate([X,Y], axis=0), np.concatenate([X,Y], axis=0).shape)
+# print("np.concatenate([X,Y], axis=1)", np.concatenate([X,Y], axis=1), np.concatenate([X,Y], axis=1).shape)
+
+# Saving memory
+# Z = np.zeros_like(Y)
+# print("Before slice: ", id(Z))
+#
+# Z[:] = X + Y
+# print("After slice: ", id(Z))
+#
+# Z = X + Y
+# print("without slice: ", id(Z))
+# print(type(id(Z)))
+
+# Data pre-processing
+
+# creating a CSV
+import os
+#
+# os.makedirs(os.path.join("data"), exist_ok=True)
+# data_file = os.path.join("data", "house_tiny.csv")
+# with open(data_file, 'w') as f:
+# 	f.write('NumRooms, Alley,Price\n')
+# 	f.write('NA,Pave,1234\n')
+# 	f.write('2,NA,5678\n')
+
+import pandas as pd
+
+data = pd.read_csv(os.path.join("data", "house_tiny.csv"))
+print(data)

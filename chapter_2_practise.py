@@ -60,8 +60,46 @@ import os
 # 	f.write('NumRooms, Alley,Price\n')
 # 	f.write('NA,Pave,1234\n')
 # 	f.write('2,NA,5678\n')
+# 	f.write('3,Strut,5678\n')
 
 import pandas as pd
 
-data = pd.read_csv(os.path.join("data", "house_tiny.csv"))
-print(data)
+# data = pd.read_csv(os.path.join("data", "house_tiny.csv"))
+# # print(data)
+#
+# inputs, outputs = data.iloc[:, 0:2], data.iloc[:, 2]
+# inputs = inputs.fillna(inputs.mean())
+# # print(inputs)
+#
+# inputs = pd.get_dummies(inputs, dummy_na=True)
+# # print(inputs)
+#
+# X, y = np.array(inputs), np.array(outputs)
+# print(X)
+# print(type(X))
+# print(y)
+# print(type(y))
+
+# Exercise after 2.2.3
+exercise_data_file = os.path.join("data", "exercise_data.csv")
+with open(exercise_data_file, 'w') as f:
+	f.write("Name,Age,Gender,Height,Weight,Diabetes\n")
+	f.write("Ankit,25,M,187,79,N\n")
+	f.write("Ankit2,NA,M,123,NA,N\n")
+	f.write("ANkit3,45,F,NA,NA,Y\n")
+	f.write("Ankit4,25,M,187,79,N\n")
+	f.write("Ankit5,NA,M,123,NA,N\n")
+	f.write("ANkit6,45,F,NA,NA,Y\n")
+
+exercise_data_import = pd.read_csv(exercise_data_file)
+print(exercise_data_import)
+# print(type(exercise_data_import))
+# getting the columns with most number of NAs
+column_with_most_nas = exercise_data_import.count().idxmin()
+# eliminating the column with most NANs
+exercise_data_import = exercise_data_import.drop(column_with_most_nas, axis=1)
+print("after dropping")
+print(exercise_data_import)
+# getting rid of NANs
+
+

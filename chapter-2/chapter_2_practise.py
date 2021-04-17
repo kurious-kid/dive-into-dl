@@ -82,14 +82,14 @@ import pandas as pd
 
 # Exercise after 2.2.3
 exercise_data_file = os.path.join("data", "exercise_data.csv")
-with open(exercise_data_file, 'w') as f:
-	f.write("Name,Age,Gender,Height,Weight,Diabetes\n")
-	f.write("Ankit,25,M,187,79,N\n")
-	f.write("Ankit2,NA,M,123,NA,N\n")
-	f.write("ANkit3,45,F,NA,NA,Y\n")
-	f.write("Ankit4,25,M,187,79,N\n")
-	f.write("Ankit5,NA,M,123,NA,N\n")
-	f.write("ANkit6,45,F,NA,NA,Y\n")
+# with open(exercise_data_file, 'w') as f:
+# 	f.write("Name,Age,Gender,Height,Weight,Diabetes\n")
+# 	f.write("Ankit,25,M,187,79,N\n")
+# 	f.write("Ankit2,NA,M,123,NA,N\n")
+# 	f.write("ANkit3,45,F,NA,NA,Y\n")
+# 	f.write("Ankit4,25,M,187,79,N\n")
+# 	f.write("Ankit5,NA,M,123,NA,N\n")
+# 	f.write("ANkit6,45,F,NA,NA,Y\n")
 
 exercise_data_import = pd.read_csv(exercise_data_file)
 print(exercise_data_import)
@@ -101,5 +101,36 @@ exercise_data_import = exercise_data_import.drop(column_with_most_nas, axis=1)
 print("after dropping")
 print(exercise_data_import)
 # getting rid of NANs
+inputs, outputs = exercise_data_import.iloc[:, 0:4], exercise_data_import.iloc[:, 4]
+inputs = inputs.fillna(inputs.mean())
+print(inputs)
+print(outputs)
+
+inputs = pd.get_dummies(inputs, dummy_na=True)
+outputs = pd.get_dummies(outputs, dummy_na=True)
+
+print(inputs.columns)
+
+print(outputs.columns)
+
+print("type(inputs): ",type(inputs))
+print("type(outputs): ",type(outputs))
+
+print("input after get dummies\n", inputs)
+print("output after get dummies\n", outputs)
+
+inputs = np.array(inputs)
+outputs = np.array(outputs)
+
+print("type(inputs): ", type(inputs))
+print("type(outputs): ", type(outputs))
+
+print("after conversion to tensor\n")
+print(inputs, "\n", inputs.shape)
+print(outputs, "\n", outputs.shape)
+
+# Linear Algebra
+
+
 
 

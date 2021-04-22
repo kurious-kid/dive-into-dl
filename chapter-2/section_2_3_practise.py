@@ -40,10 +40,10 @@ npx.set_np()
 # x = np.arange(4)
 # print(x.sum())
 
-A = np.arange(20).reshape(5, 4)
-# print(A.sum())
-
-print(A)
+# A = np.arange(20).reshape(5, 4)
+# # print(A.sum())
+#
+# print(A)
 
 # A_sum_along_axis_0 = A.sum(axis=0)
 # print(A_sum_along_axis_0)
@@ -96,6 +96,27 @@ print(A)
 # print(A/sum_c_without_dims)
 # print(A/sum_C)
 
-print(A.cumsum(axis=0))
-print(A.cumsum(axis=1))
+# print(A.cumsum(axis=0))
+# print(A.cumsum(axis=1))
+
+# dot product
+
+# x = np.ones(4)
+# y = np.arange(4)
+#
+# print(x)
+# print(y)
+#
+# print(np.dot(x, y))
+
+# Matrix vector product
+A = np.arange(20).reshape(5,4)
+B = np.ones(4)
+
+print(A)
+print(B)
+print(np.dot(A, B))
+
+
+
 
